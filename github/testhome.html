@@ -1,0 +1,107 @@
+<html lang="en">
+
+<head>
+  <title>Library home page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+    .text {
+      text-align: center;
+    }
+
+    .header {
+      font-style: italic;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .back {
+      background-color: lightslategray;
+    }
+    table,th,td{
+      border-style: solid;
+      background-color: lightseagreen;
+    }
+  </style>
+
+  <script>
+    function view() {
+      document.getElementById("note").innerHTML = ""
+      var data = JSON.parse(localStorage.getItem("library"))
+
+      var list = document.getElementById("note")
+      var table = document.createElement("table")
+      table.setAttribute("style", "border-style:solid;height:150px;width:600px;border-color:black")
+      var tr = document.createElement("tr")
+      tr.setAttribute("style", "border-style:solid")
+      var th1 = document.createElement("th")
+      th1.innerHTML = "Name"
+      tr.appendChild(th1)
+
+      var th2 = document.createElement("th")
+      th2.innerHTML = "Author"
+      tr.appendChild(th2)
+
+      var th3 = document.createElement("th")
+      th3.innerHTML = "Price"
+      tr.appendChild(th3)
+
+      var th4 = document.createElement("th")
+      th4.innerHTML = "Number"
+      tr.appendChild(th4)
+
+      table.appendChild(tr)
+
+      for (var i = 0; i < data.length; i++) {
+
+        var tr = document.createElement("tr")
+        tr.setAttribute("style", "border-style:solid")
+        for (var j = 0; j < 4; j++) {
+          var td = document.createElement("td")
+          td.innerHTML = data[i][j]
+          tr.appendChild(td)
+
+        }
+        table.appendChild(tr)
+      }
+      list.appendChild(table)
+
+    }
+
+  </script>
+
+</head>
+
+<body class="back">
+
+  <div class="jumbotron jumbotron-fluid text">
+    <div class="container header">
+      <h1>LIBRARY</h1>
+      <p>TODAY A READER, TOMORROW A LEADER!!</p>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="testview.html">Add new book</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" onclick="view()">Available books</a>
+      </li>
+    </ul>
+  </nav>
+  <br>
+  <!-- <button onclick="view()">Available books</button> -->
+  <div id="note"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+  <title>Add book</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    var array = []
+    function books() {
+      var data = [
+        document.getElementById("name").value,
+        document.getElementById("authors").value,
+        document.getElementById("price").value,
+        document.getElementById("number").value
+      ]
+      array.push(data)
+      localStorage.setItem("library", JSON.stringify(array))
+    }
+    function add() {
+      window.location.href = "testhome.html"
+    }
+  </script>
+  <style>
+    .back {
+      background-color: lightslategray;
+    }
+    
+  </style>
+
+
+</head>
+
+<body class="back">
+  <div class="container">
+    <h2>Add Books</h2>
+    <form action="/action_page.php">
+      <div class="form-group">
+        <label for="name">Name :</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+      </div><br>
+      <div class="form-group">
+        <label for="author">Author :</label>
+        <input type="text" class="form-control" id="authors" placeholder="Enter author" name="author">
+      </div><br>
+      <div class="form-group">
+        <label for="price">Price :</label>
+        <input type="text" class="form-control" id="price" placeholder="Enter price" name="price">
+      </div><br>
+      <div class="form-group">
+        <label for="number">Number of books :</label>
+        <input type="text" class="form-control" id="number" placeholder="Enter number" name="number">
+      </div><br>
+
+    </form>
+
+    <div id="name"></div>
+    <div id="authors"></div>
+    <div id="price"></div>
+    <div id="number"></div>
+    <button onclick="books()" class="btn btn-primary">ADD</button>
+    <button onclick="add()" class="btn btn-primary">Home</button>
+
+  </div>
+
+
+
+</body>
+
+</html>
